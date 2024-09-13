@@ -1,0 +1,182 @@
+CREATE DATABASE db_DrugstoreGreender;
+USE db_DrugstoreGreender;
+
+drop database db_DrugstorGreender;
+show databases;
+
+drop table Pedidos;
+drop table Productos;
+drop table Categorias;
+drop table Empleados;
+drop table Clientes;
+drop table Ventas;
+drop table Login;
+drop table Proveedores;
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'root123';
+
+CREATE TABLE Proveedores (
+id_proveedor int primary key auto_increment,
+Nombre_Proveedor varchar (50) not null,
+Telefono int not null,
+Correo_Proveedor varchar (50) not null
+);
+
+
+CREATE TABLE Pedidos (
+id_pedido int primary key auto_increment,
+Fecha_Pedido date not null,
+Fecha_Entrega date not null,
+Estado_Pedido varchar(50) not null,
+id_proveedor int,
+foreign key (id_proveedor) references Proveedores(id_proveedor),
+id_producto int,
+foreign key (id_producto) references Productos(id_producto)
+);
+
+
+
+CREATE TABLE Productos (
+id_producto int primary key auto_increment,
+Nombre_Producto varchar(50) not null,
+Descripcion varchar(50),
+Precio varchar(50) not null,
+Stock varchar(50) not null,
+imagen varchar(500) not null,
+id_categoria int,
+foreign key (id_categoria) references Categorias(id_categoria)
+);
+
+drop table Productos;
+
+CREATE TABLE Categorias (
+id_categoria int primary key auto_increment,
+Nombre_Categoria varchar(50) not null,
+Descripcion varchar(100),
+imagen varchar(500) not null
+);
+drop table Categorias;
+
+
+CREATE TABLE Empleados (
+id_empleado int primary key auto_increment,
+Nombre_Empleado varchar(50) not null,
+Apellido_Empleado varchar(50) not null,
+Telefono int,
+Correo varchar(50) not null,
+Direccion varchar(50)
+);
+drop table Empleados;
+
+
+CREATE TABLE Clientes (
+id_cliente int primary key auto_increment,
+Nombre_Cliente varchar(50) not null,
+Apellido_Cliente varchar(50) not null,
+Telefono int not null,
+Direccion varchar(50)
+);
+drop table Clientes;
+
+
+CREATE TABLE Ventas (
+id_venta int primary key auto_increment,
+Fecha_Venta varchar(500),
+Cantidad int,
+Precio int,
+id_empleado int,
+id_cliente int,
+id_producto int,
+foreign key (id_empleado) references Empleados(id_empleado),
+foreign key (id_cliente) references Clientes(id_cliente),
+foreign key (id_producto) references Productos(id_producto)
+);
+
+drop table Ventas;
+
+
+
+CREATE TABLE Login (
+username varchar (50),
+passwrd varchar (50),
+rol varchar (50)
+);
+
+drop table Login;
+
+insert into Login (username, passwrd, rol) values ("usuario", "asd123", "user");
+ 
+ 
+ select * from Clientes;
+ 
+
+
+insert into Proveedores (Nombre_Proveedor,Telefono,Correo_Proveedor) values ('Arcor',381656697,'Arcor@gmail.com');
+insert into Proveedores (Nombre_Proveedor,Telefono,Correo_Proveedor) values ('Quilmes',381215474,'Quilmes@gmail.com');
+insert into Proveedores (Nombre_Proveedor,Telefono,Correo_Proveedor) values ('Magistral',381365698,'Magistral@gmail.com');
+insert into Proveedores (Nombre_Proveedor,Telefono,Correo_Proveedor) values ('Marolio',381245687,'Marolio@gmail.com');
+
+select * from Proveedores;
+
+insert into Categorias (Nombre_Categoria,Descripcion,imagen) values ('Alimentos','Chocolate, Fideo, Arroz, Polenta, Leche, Aceite','https://img.europapress.es/fotoweb/fotonoticia_20220329074050_1200.jpg');
+insert into Categorias (Nombre_Categoria,Descripcion,imagen) values ('Bebidas Alcoholicas','Cerveza, Vodka, Vino, Whisky, Fernet','https://baresycocteles.com/wp-content/uploads/2023/10/1366_2000.jpg');
+insert into Categorias (Nombre_Categoria,Descripcion,imagen) values ('Productos de Limpieza','Lavandina, Suavizante, Detergente,','https://s3.ppllstatics.com/laverdad/www/multimedia/2023/03/15/productos-limpieza-toxicos-peligrosos-ocu-ksTE-U1909178767610w-1200x840@La%20Verdad.jpg');
+
+select * from Categorias;
+
+insert into Empleados (Nombre_Empleado,Apellido_Empleado,Telefono,Correo,Direccion) values ('Manuel','Suarez',381457985,'Manu@gmail.com','Peron 230');
+insert into Empleados (Nombre_Empleado,Apellido_Empleado,Telefono,Correo,Direccion) values ('Luciano','Nieto',381321648,'Luciano@gmail.com','San Martin 550');
+insert into Empleados (Nombre_Empleado,Apellido_Empleado,Telefono,Correo,Direccion) values ('Mauro','Sosa',381452178,'Mau@gmail.com','Corrientes 470');
+insert into Empleados (Nombre_Empleado,Apellido_Empleado,Telefono,Correo,Direccion) values ('Gaston','Paz',381236387,'Gaston@gmail.com','Marcos Paz 300');
+
+select * from Empleados;
+
+insert into Clientes (Nombre_Cliente,Apellido_Cliente,Telefono,Direccion) values ('Joel','Jerez',381456952,'San Juan 710');
+insert into Clientes (Nombre_Cliente,Apellido_Cliente,Telefono,Direccion) values ('Nazareno','Gonzales',381745697,'Cordoba 120');
+insert into Clientes (Nombre_Cliente,Apellido_Cliente,Telefono,Direccion) values ('Sergio','Coronel',381457896,'Salta 600');
+insert into Clientes (Nombre_Cliente,Apellido_Cliente,Telefono,Direccion) values ('Mariana','Molina',381417485,'25 de Mayo 650');
+
+select * from Clientes;
+
+insert into Pedidos (Fecha_Pedido,Fecha_Entrega,Estado_Pedido,id_proveedor,id_producto) values ('2024-03-15','2024-03-20','Entregado',1,1);
+insert into Pedidos (Fecha_Pedido,Fecha_Entrega,Estado_Pedido,id_proveedor,id_producto) values ('2024-05-22','2024-05-28','Entregado',2,2);
+insert into Pedidos (Fecha_Pedido,Fecha_Entrega,Estado_Pedido,id_proveedor,id_producto) values ('2024-07-01','2024-07-03','No Entregado',3,3);
+insert into Pedidos (Fecha_Pedido,Fecha_Entrega,Estado_Pedido,id_proveedor,id_producto) values ('2024-06-10','2024-06-30','Entregado',1,4);
+
+select * from Pedidos;
+
+insert into Productos (Nombre_Producto,Descripcion,Precio,Stock,imagen,id_categoria) values ('Chocolate','Amargo','1500','20','https://arcorencasa.com/wp-content/uploads/2023/06/20230522-3101.jpg',1);
+insert into Productos (Nombre_Producto,Descripcion,Precio,Stock,imagen,id_categoria) values ('Fernet','Alcohol','5500','10','https://acdn.mitiendanube.com/stores/835/701/products/fernet-branca-aperitivo-1000-ml1-f361be27b92a8c5e0b16661028118789-640-0.jpg',2);
+insert into Productos (Nombre_Producto,Descripcion,Precio,Stock,imagen,id_categoria) values ('Detergente','Original','2200','15','https://arcencohogar.vtexassets.com/arquivos/ids/304089-800-800?v=637665770264300000&width=800&height=800&aspect=true',3);
+insert into Productos (Nombre_Producto,Descripcion,Precio,Stock,imagen,id_categoria) values ('Chocolate','Blanco','1700','12','https://arcorencasa.com/wp-content/uploads/2023/06/20230522-6074.jpg',1);
+
+select * from Productos P join Categorias C on P.id_categoria = C.id_categoria;
+
+insert into Ventas (id_empleado,id_cliente,id_producto,Fecha_Venta,Cantidad,Precio) values (1,4,2,'2024-06-25',2,1500);
+insert into Ventas (id_empleado,id_cliente,id_producto,Fecha_Venta,Cantidad,Precio) values (2,3,1,'2024-06-22',1,5500);
+insert into Ventas (id_empleado,id_cliente,id_producto,Fecha_Venta,Cantidad,Precio) values (3,2,3,'2024-06-28',3,2200);
+insert into Ventas (id_empleado,id_cliente,id_producto,Fecha_Venta,Cantidad,Precio) values (4,1,4,'2024-06-20',2,1700);
+insert into Ventas (id_empleado,id_cliente,id_producto,Fecha_Venta,Cantidad,Precio) values (4,1,4,'2024-06-20',2,1700);
+
+select * from Ventas;
+
+
+select * from Ventas as venta
+inner join Empleados as empleado
+on venta.id_empleado = empleado.id_empleado
+inner join Clientes as cliente
+on venta.id_cliente = cliente.id_cliente
+inner join Productos as producto
+on venta.id_producto = producto.id_producto;
+
+select * from Ventas as venta
+inner join Empleados as empleado
+on venta.id_empleado = empleado.id_empleado
+inner join Clientes as cliente
+on venta.id_cliente = cliente.id_cliente
+inner join Productos as producto
+on venta.id_producto = producto.id_producto 
+where venta.id_venta = 1;
+
+select * from Pedidos;

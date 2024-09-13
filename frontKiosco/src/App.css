@@ -1,0 +1,127 @@
+
+.contenedor-form{
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contenedor-form label{
+  font-size: 24px;
+  color: white;
+}
+
+
+.contenedor-datos{
+margin-right: 1rem ;
+
+}
+
+.contenedor-datos input{
+  display: block;
+  width: 100%;
+  width: 350px;
+}
+
+
+.contenedor-datos select{
+  display: block;
+  width: 100%;
+  width: 350px;
+}
+
+
+.contenedor-datos button{
+  margin-top: 1rem;
+  float: right;
+}
+
+.contenedor-datos label{
+  display: block;
+  margin-top: 0.5rem;
+  color: rgb(39, 37, 37);
+}
+.contenedor-datos{
+  display: flex;
+}
+
+.contenedor-general-txt-tabla{
+  display: flex;
+  margin: 1rem;
+}
+
+button{
+  padding: 0.3rem;
+  margin-left: 0.5rem;
+}
+
+
+.contenedor-btn-nuevo-pedido{
+  display: flex;
+  display: block;
+  justify-content: right;
+}
+
+.contenedor-carta{
+  display: flex;
+  justify-content: center;
+}
+
+.contenedor-navegacion{
+  margin-top: 1rem;
+}
+
+.contenedor-navegacion li{
+  display: inline;
+
+}
+
+.contenedor-navegacion a{
+  margin: 1rem;
+  padding: 1rem;
+  background-color: blueviolet;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+.contenedor-form{
+  width: 600px;
+}
+
+.contenedor-form label{
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  color: black;
+}
+
+.contenedor-form input{
+
+  display: block;
+  width: 100%;
+}
+
+.contenedor-form select{
+
+  display: block;
+  width: 100%;
+}
+
+.contenedor-form button{
+ margin-top: 1rem;
+  margin-left: 1rem;
+  float: right;
+}
+
+.contenedor-general{
+  margin-top: 1rem;
+}
+
+.btn-regresar{
+  float: right;
+  margin: 1reem;
+}
+
+.contenedor-general-crear-venta select{
+ width: 100%;
+}
